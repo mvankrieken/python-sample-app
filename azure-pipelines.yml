@@ -34,8 +34,3 @@ steps:
     pip install pytest-azurepipelines
     pytest --cov=src --cov-report xml:coverage.xml tests/
   displayName: 'pytest'
-
-- task: PublishCodeCoverageResults@2
-  inputs:
-    summaryFileLocation: '**/coverage.xml'
-    pathToSources: 'src'
