@@ -17,10 +17,20 @@ strategy:
       python.version: '3.9'
 
 steps:
+- script: |
+    mkdir -p $(Agent.ToolsDirectory)/Python/3.9.23/x64
+    mkdir -p $(Agent.ToolsDirectory)/Python/3.9.23/x64.complete
+  displayName: 'Create Python local folders'
+
+- script: |
+    curl -LO https://github.com/actions/python-versions/releases/download/3.9.23-15433290661/python-3.9.23-linux-22.04-x64.tar.gz
+    tar -xvf python-3.9.23-linux-22.04-x64.tar.gz
+  workingDirectory: $(Agent.ToolsDirectory)/Python/3.9.23/x64
+  displayName: 'Downloaded'
 - task: UsePythonVersion@0
   inputs:
     versionSpec: '$(python.version)'
-    architecture:  'x86' 
+    architecture:  'x64' 
     disableDownloadFromRegistry: true
   displayName: 'Use Python $(python.version)'
 
