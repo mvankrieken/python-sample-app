@@ -20,7 +20,7 @@ steps:
 - task: UsePythonVersion@0
   inputs:
     versionSpec: '$(python.version)'
-    architecture:  'x64' 
+    architecture:  'x86' 
   displayName: 'Use Python $(python.version)'
 
 - script: |
