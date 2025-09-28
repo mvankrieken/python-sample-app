@@ -32,6 +32,7 @@ steps:
     versionSpec: '$(python.version)'
     architecture:  'x64' 
     disableDownloadFromRegistry: true
+    addToPath: true
   displayName: 'Use Python $(python.version)'
 
 - script: |
