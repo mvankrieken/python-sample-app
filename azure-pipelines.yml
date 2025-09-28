@@ -32,8 +32,7 @@ steps:
 
 - script: |
     pip install pytest-azurepipelines
-    coverage run -m pytest
-    coverage xml -o coverage.xml
+    pytest --cov=src --cov-report xml:coverage.xml tests/
   displayName: 'pytest'
 
 - task: PublishCodeCoverageResults@2
