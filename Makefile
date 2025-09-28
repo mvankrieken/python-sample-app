@@ -1,7 +1,7 @@
 quality:
 	ruff check --fix
 	pyright
-	pytest --cov=src tests/
+	pytest --cov=src --cov-report xml:coverage.xml tests/
 
 dependencies:
-	poetry export --without-hashes --format=requirements.txt > requirements-dev.txt
+	poetry export --without-hashes --format=requirements.txt --all-groups -o requirements-dev.txt
