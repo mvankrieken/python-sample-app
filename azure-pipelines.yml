@@ -38,14 +38,14 @@ steps:
 - script: |
     ls -al $(Agent.ToolsDirectory)/Python/3.9.23/x64
     ls -al $(Agent.ToolsDirectory)/Python/3.9.23/x64/bin
+  displayName: 'Check dirs'
+
+- script: |
+    python3 -m pip install --upgrade pip
+    pip3 install -r requirements-dev.txt
   displayName: 'Install dependencies'
 
 - script: |
-    python -m pip install --upgrade pip
-    pip install -r requirements-dev.txt
-  displayName: 'Install dependencies'
-
-- script: |
-    pip install pytest pytest-azurepipelines
+    pip3 install pytest pytest-azurepipelines
     pytest
   displayName: 'pytest'
