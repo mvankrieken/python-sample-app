@@ -9,7 +9,7 @@ trigger:
 pool: 
   name: Local-kubernetes
   demands: 
-    - DEF_CUSTOMER_TYPE -equals build
+    - DEF_TYPE -equals build
 
 strategy:
   matrix:
