@@ -6,8 +6,10 @@
 trigger:
 - main
 
-pool:
-  vmImage: ubuntu-latest
+pool: 
+  name: Local-kubernetes
+  demands: 
+    - DEF_CUSTOMER_TYPE -equals build
 
 strategy:
   matrix:
@@ -22,7 +24,7 @@ steps:
 
 - script: |
     python -m pip install --upgrade pip
-    pip install -r requirements.txt
+    pip install -r requirements-dev.txt
   displayName: 'Install dependencies'
 
 - script: |
