@@ -37,6 +37,7 @@ steps:
 
 - script: |
     ls -al $(Agent.ToolsDirectory)/Python/3.9.23/x64
+    ls -al $(Agent.ToolsDirectory)/Python/3.9.23/x64/bin
   displayName: 'Install dependencies'
 
 - script: |
