@@ -33,15 +33,12 @@ steps:
 - script: |
     pip install pytest-azurepipelines
     pytest --cov=src --cov-report xml:coverage.xml tests/
-  displayName: 'pytest'
+  displayName: 'Pytest'
 
-- task: CopyFiles@2
-  inputs:
-    sourceFolder: 'src'
-    contents: '**/src/**/*.py'
-    targetFolder: '$(Build.ArtifactStagingDirectory)'
+- script: |
+    pip install python -m build
+  displayName: 'Build'
 
-- task: PublishBuildArtifacts@1
-  inputs:
-    pathToPublish: '$(Build.ArtifactStagingDirectory)'
-    artifactName: drop    
+- script: |
+    twine upload -r sample-app dist/*
+  displayName: 'Upload to feed'
