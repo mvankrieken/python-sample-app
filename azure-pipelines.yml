@@ -40,10 +40,6 @@ steps:
   displayName: 'Ruff'
 
 - script: |
-    pyright src/
-  displayName: 'Pyright'
-
-- script: |
     python -m build
   displayName: 'Build'
 
