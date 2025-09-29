@@ -36,9 +36,18 @@ steps:
   displayName: 'Pytest'
 
 - script: |
-    pip install python -m build
+    ruff check
+  displayName: 'Ruff'
+
+- script: |
+    pyright
+  displayName: 'Pyright'
+
+- script: |
+    python -m build
   displayName: 'Build'
 
 - script: |
+    pip install twine
     twine upload -r sample-app dist/*
   displayName: 'Upload to feed'
