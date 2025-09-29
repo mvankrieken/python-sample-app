@@ -34,3 +34,14 @@ steps:
     pip install pytest-azurepipelines
     pytest --cov=src --cov-report xml:coverage.xml tests/
   displayName: 'pytest'
+
+- task: CopyFiles@2
+  inputs:
+    sourceFolder: 'src'
+    contents: '**/src/**/*.py'
+    targetFolder: '$(Build.ArtifactStagingDirectory)'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathToPublish: '$(Build.ArtifactStagingDirectory)'
+    artifactName: drop    
