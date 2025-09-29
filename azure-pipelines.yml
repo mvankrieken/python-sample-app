@@ -40,7 +40,7 @@ steps:
   displayName: 'Ruff'
 
 - script: |
-    python -m build
+    python -m build .
   displayName: 'Build'
 
 - script: |
