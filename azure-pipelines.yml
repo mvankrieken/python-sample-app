@@ -46,5 +46,5 @@ steps:
 
 - script: |
     pip install twine
-    twine upload -r sample-app dist/*
+    twine upload -r sample-app --config-file .pypirc dist/*.whl
   displayName: 'Upload to feed'
