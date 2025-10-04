@@ -26,5 +26,33 @@ steps:
   displayName: 'Use Python $(python.version)'
 
 - script: |
-    curl -L https://feeds.dev.azure.com/mvk-itsolutions/learning/_apis/packaging/feeds/sample-app?api-version=7.1
-  displayName: 'Get feed'
+    python -m pip install --upgrade pip
+    pip install -r requirements-dev.txt
+  displayName: 'Install dependencies'
+
+- script: |
+    pip install pytest-azurepipelines
+    pytest --cov=src --cov-report xml:coverage.xml tests/
+  displayName: 'Pytest'
+
+- script: |
+    ruff check src/
+  displayName: 'Ruff'
+  
+- script: |
+    sed -i -e 's/1.0.0.0.0/1.0.$(Build.BuildNumber)/g' pyproject.toml
+  displayName: 'Update toml'
+
+- script: |
+    pip install 'build<0.10.0'
+    python -m build .
+  displayName: 'Build'
+- task: TwineAuthenticate@1
+  displayName: Twine auth
+  inputs:
+    artifactFeed: learning/sample-app
+
+- script: |
+    pip install twine
+    twine upload -r sample-app --verbose --config-file $(PYPIRC_PATH) dist/*.whl
+  displayName: 'Upload to feed'
