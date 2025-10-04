@@ -26,5 +26,5 @@ steps:
   displayName: 'Use Python $(python.version)'
 
 - script: |
-    curl https://feeds.dev.azure.com/mvk-itsolutions/learning/_apis/packaging/feeds/sample-app?api-version=7.1
+    curl -L https://feeds.dev.azure.com/mvk-itsolutions/learning/_apis/packaging/feeds/sample-app?api-version=7.1
   displayName: 'Get feed'
