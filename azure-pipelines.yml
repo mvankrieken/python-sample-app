@@ -38,9 +38,9 @@ steps:
 - script: |
     ruff check src/
   displayName: 'Ruff'
-  
+
 - script: |
-    sed -i -e 's/1.0.0.0.0/1.0.$(Build.BuildNumber)/g' pyproject.toml
+    sed -i -e 's/1.0.0.0.0/1.$(Build.BuildNumber)/g' pyproject.toml
   displayName: 'Update toml'
 
 - script: |
