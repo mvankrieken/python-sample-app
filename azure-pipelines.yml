@@ -44,7 +44,7 @@ steps:
   displayName: 'Get short commit id'  
 
 - script: |
-    sed -i -e 's/python-sample-app/$(GIT_SHORT_ID)/g' pyproject.toml
+    sed -i -e 's/1.0.0.0.0/$(GIT_SHORT_ID)/g' pyproject.toml
   displayName: 'Update toml'
 
 - script: |
