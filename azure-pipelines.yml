@@ -43,6 +43,10 @@ steps:
     pip install 'build<0.10.0'
     python -m build .
   displayName: 'Build'
+- task: TwineAuthenticate@1
+  displayName: Twine auth
+  inputs:
+    artifactFeed: sample-app
 
 - script: |
     pip install twine
