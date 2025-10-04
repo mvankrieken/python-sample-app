@@ -40,6 +40,14 @@ steps:
   displayName: 'Ruff'
 
 - script: |
+    echo "##vso[task.setvariable variable=GIT_SHORT_ID]$(echo $(Build.SourceVersion) | cut -c1-7)"
+  displayName: 'Get short commit id'  
+
+- script: |
+    sed -i -e 's/python-sample-app/$(GIT_SHORT_ID)/g' pyproject.toml
+  displayName: 'Update toml'
+
+- script: |
     pip install 'build<0.10.0'
     python -m build .
   displayName: 'Build'

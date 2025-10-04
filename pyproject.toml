@@ -1,8 +1,12 @@
-[tool.poetry]
+[project]
 name = "python-sample-app"
-version = "0.1.0"
+version = "1.0.0.0.0"
 description = "Example python app"
-authors = ["Martin <mkrieken@gmail.com>"]
+authors = [
+    { name = "Martin van Krieken", email = "mkrieken@gmail.com"}
+]
+
+[tool.poetry]
 packages = [{include = "*", from="src"}]
 
 [tool.poetry.dependencies]
