@@ -46,11 +46,9 @@ steps:
     git fetch
     git checkout -b main
     git branch -v -a
-    git pull ...
     python -m poetry version patch
-    git add .
-    git commit -m "[skip ci] New version"
-    git push origin main
+    git commit -m "[skip ci] New version" pyproject.toml
+    git push origin main p
   displayName: 'Update version and commit to git'
 
 - script: |
