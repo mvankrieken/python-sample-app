@@ -12,6 +12,7 @@ strategy:
       python.version: '3.9'
 
 steps:
+
 - task: UsePythonVersion@0
   inputs:
     versionSpec: '$(python.version)'
@@ -19,6 +20,10 @@ steps:
     disableDownloadFromRegistry: true
     addToPath: true
   displayName: 'Use Python $(python.version)'
+
+# Checkouts main code
+- checkout: self
+  persistCredentials: true
 
 - script: |
     python -m pip install --upgrade pip
