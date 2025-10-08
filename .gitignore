@@ -5,3 +5,4 @@
 *.pyc
 coverage.xml
 dist
+test-output.xml
