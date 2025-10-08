@@ -44,9 +44,9 @@ steps:
     git config --global user.name "Martin van Krieken"
     git config --global user.email "mkrieken@gmail.com"
     git fetch
-    git branch -v -a
     git checkout -b main
     git branch -v -a
+    git pull
     poetry version patch
     git add .
     git commit -m "[skip ci] New version"
